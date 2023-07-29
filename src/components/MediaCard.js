@@ -12,13 +12,10 @@ const MediaCard = () => {
   const [estates, setEstates] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log(estates);
-
   useEffect(() => {
     axios
       .get("http://localhost:1337/api/estates")
       .then((response) => {
-        console.log(response);
         setEstates(response.data.data);
         setLoading(false);
       })
