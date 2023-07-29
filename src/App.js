@@ -1,17 +1,11 @@
 import "./App.css";
-import EstateList from "./components/EstateList";
-import PrimarySearchAppBar from "./components/PrimarySearchAppBar";
-import Yeni from "./components/Yeni";
-import MediaCard from "./components/MediaCard";
 
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <EstateList />
-      <Yeni />
-      <PrimarySearchAppBar />
-      <MediaCard />
+      <Home />
     </div>
   );
 }
