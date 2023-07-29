@@ -50,7 +50,7 @@ const MediaCard = () => {
                   e.target.src = "../assets/images/cards/img2.png";
                 }}
               />
-              <CardContent>
+              <CardContent className="text-left">
                 <Typography gutterBottom variant="h5" component="div">
                   {estate.attributes.Name}
                 </Typography>
