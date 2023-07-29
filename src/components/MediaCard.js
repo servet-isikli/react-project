@@ -33,7 +33,7 @@ const MediaCard = () => {
   }
 
   return (
-    <Container >
+    <Container>
       <h1>Estates</h1>
       {estates.map((estate) => (
         <Card key={estate.id} sx={{ maxWidth: 345 }}>
