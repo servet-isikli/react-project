@@ -12,6 +12,6 @@ code {
     monospace;
 }
 /* Tailwind directives */
-@import "tailwindcss/base";
+/* @import "tailwindcss/base"; */
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
