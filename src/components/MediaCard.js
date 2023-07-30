@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import { useData } from "./DataContext";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Link } from "@mui/material";
 
 const MediaCard = () => {
-  const [estates, setEstates] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:1337/api/estates")
-      .then((response) => {
-        setEstates(response.data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching estates:", error);
-        setLoading(false);
-      });
-  }, []);
+  const { estates, loading } = useData();
 
   if (loading) {
     return <div>Loading...</div>;
@@ -58,7 +44,10 @@ const MediaCard = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                {/* Link to Learn More */}
+                <Link to={`/blog/${estate.attributes.id}`}>
+                  <Button size="small">Learn More</Button>
+                </Link>
               </CardActions>
             </Card>
           </Grid>
