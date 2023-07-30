@@ -45,7 +45,7 @@ const MediaCard = () => {
               <CardActions>
                 <Button size="small">Share</Button>
                 {/* Link to Learn More */}
-                <Link to={`/blog/${estate.attributes.id}`}>
+                <Link to={`/estates/${estate.id}`}>
                   <Button size="small">Learn More</Button>
                 </Link>
               </CardActions>

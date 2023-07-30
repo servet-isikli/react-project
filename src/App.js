@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/blog/:postId" element={<MediaCardDetail />} />
+            <Route path="/estates/:postId" element={<MediaCardDetail />} />
           </Routes>
           <ButtonAppBar />
         </BrowserRouter>
