@@ -1,12 +1,12 @@
 import React from "react";
-import PrimarySearchAppBar from "../components/PrimarySearchAppBar";
 import BasicGrid from "../components/BasicGrid";
+// import Typography from "../components/Typography";
 
 const Home = () => {
   return (
     <div>
-      <PrimarySearchAppBar />
       <BasicGrid />
+      {/* <Typography/> */}
     </div>
   );
 };
