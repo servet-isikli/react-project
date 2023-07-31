@@ -5,8 +5,6 @@ import { useData } from "./DataContext";
 const MediaCardDetail = () => {
   const { postId } = useParams();
   const { estates } = useData();
-  // console.log(estates);
-
 
   const estate = estates.find((estate) => estate.id === postId);
 
