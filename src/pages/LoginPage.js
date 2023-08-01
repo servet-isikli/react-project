@@ -13,9 +13,9 @@ export default function LoginPage() {
         }}
         noValidate
         autoComplete="off"
-        className="mt-4"
+        className="mt-4 "
       >
-        <div>
+        <div className=" grid justify-center ">
           <TextField
             required
             id="outlined-required"
