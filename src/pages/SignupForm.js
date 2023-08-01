@@ -48,7 +48,7 @@ const SignupForm = () => {
   });
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" className="mt-4 mb-4">
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
