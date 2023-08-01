@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TextField, Button, Container } from "@mui/material";
+import axios from "axios";
 
 const SignupForm = () => {
   const formik = useFormik({
@@ -24,8 +25,25 @@ const SignupForm = () => {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      // Form gönderme işlemleri
-      console.log(values);
+      // Send the form data to the Strapi endpoint
+      const url = "/api/users";
+      const body = JSON.stringify(values);
+      axios
+        .post(url, body, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          if (response.status === 201) {
+            // The user was created successfully
+          } else {
+            // An error occurred
+          }
+        })
+        .catch((error) => {
+          // An error occurred
+        });
     },
   });
 
