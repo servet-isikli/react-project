@@ -1,64 +1,54 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { Container } from "@mui/material";
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { TextField, Button, Container } from "@mui/material";
 
-export default function LoginPage() {
+const LoginForm = () => {
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Required"),
+      password: Yup.string()
+        .required("Required")
+        .min(6, "Password must be at least 6 characters"),
+    }),
+    onSubmit: (values) => {
+      // Form gönderme işlemleri
+      console.log(values);
+    },
+  });
+
   return (
-    <Container>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
-        }}
-        noValidate
-        autoComplete="off"
-        className="mt-4 "
-      >
-        <div className=" grid justify-center ">
-          <TextField
-            required
-            id="outlined-required"
-            label="Required"
-            defaultValue="Hello World"
-          />
-          <TextField
-            disabled
-            id="outlined-disabled"
-            label="Disabled"
-            defaultValue="Hello World"
-          />
-          <TextField
-            id="outlined-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-          />
-          <TextField
-            id="outlined-read-only-input"
-            label="Read Only"
-            defaultValue="Hello World"
-            InputProps={{
-              readOnly: true,
-            }}
-          />
-          <TextField
-            id="outlined-number"
-            label="Number"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <TextField id="outlined-search" label="Search field" type="search" />
-          <TextField
-            id="outlined-helperText"
-            label="Helper text"
-            defaultValue="Default Value"
-            helperText="Some important text"
-          />
-        </div>
-      </Box>
+    <Container maxWidth="sm">
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
+          fullWidth
+          id="username"
+          name="username"
+          label="Username"
+          variant="outlined"
+          {...formik.getFieldProps("username")}
+        />
+
+        <TextField
+          fullWidth
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          {...formik.getFieldProps("password")}
+        />
+
+        <Button type="submit" variant="contained" color="primary">
+          Login
+        </Button>
+      </form>
     </Container>
   );
-}
+};
+
+export default LoginForm;

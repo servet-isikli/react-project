@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { TextField, Button, Container } from "@mui/material";
 
 const SignupForm = () => {
   const formik = useFormik({
@@ -8,46 +9,82 @@ const SignupForm = () => {
       firstName: "",
       lastName: "",
       email: "",
+      password: "",
+      confirmPassword: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Required"),
-      lastName: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
+      firstName: Yup.string().required("Required"),
+      lastName: Yup.string().required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
+      password: Yup.string()
+        .required("Required")
+        .min(6, "Password must be at least 6 characters"),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password"), null], "Passwords must match")
+        .required("Required"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // Form gönderme işlemleri
+      console.log(values);
     },
   });
+
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstName">First Name</label>
-      <input
-        id="firstName"
-        type="text"
-        {...formik.getFieldProps("firstName")}
-      />
-      {formik.touched.firstName && formik.errors.firstName ? (
-        <div>{formik.errors.firstName}</div>
-      ) : null}
+    <Container maxWidth="sm">
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
+          fullWidth
+          id="firstName"
+          name="firstName"
+          label="First Name"
+          variant="outlined"
+          {...formik.getFieldProps("firstName")}
+        />
 
-      <label htmlFor="lastName">Last Name</label>
-      <input id="lastName" type="text" {...formik.getFieldProps("lastName")} />
-      {formik.touched.lastName && formik.errors.lastName ? (
-        <div>{formik.errors.lastName}</div>
-      ) : null}
+        <TextField
+          fullWidth
+          id="lastName"
+          name="lastName"
+          label="Last Name"
+          variant="outlined"
+          {...formik.getFieldProps("lastName")}
+        />
 
-      <label htmlFor="email">Email Address</label>
-      <input id="email" type="email" {...formik.getFieldProps("email")} />
-      {formik.touched.email && formik.errors.email ? (
-        <div>{formik.errors.email}</div>
-      ) : null}
+        <TextField
+          fullWidth
+          id="email"
+          name="email"
+          label="Email"
+          variant="outlined"
+          {...formik.getFieldProps("email")}
+        />
 
-      <button type="submit">Submit</button>
-    </form>
+        <TextField
+          fullWidth
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          {...formik.getFieldProps("password")}
+        />
+
+        <TextField
+          fullWidth
+          id="confirmPassword"
+          name="confirmPassword"
+          label="Confirm Password"
+          type="password"
+          variant="outlined"
+          {...formik.getFieldProps("confirmPassword")}
+        />
+
+        <Button type="submit" variant="contained" color="primary">
+          Sign Up
+        </Button>
+      </form>
+    </Container>
   );
 };
+
 export default SignupForm;

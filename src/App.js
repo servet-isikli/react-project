@@ -9,7 +9,6 @@ import MediaCardDetail from "./components/MediaCardDetail";
 import SignupForm from "./pages/SignupForm";
 import LoginForm from "./pages/LoginForm";
 
-
 function App() {
   return (
     <div className="App">
