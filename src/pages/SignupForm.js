@@ -26,7 +26,7 @@ const SignupForm = () => {
     }),
     onSubmit: (values) => {
       // Send the form data to the Strapi endpoint
-      const url = "/api/users";
+      const url = "http://localhost:1337/api/auth/local";
       const body = JSON.stringify(values);
       axios
         .post(url, body, {
