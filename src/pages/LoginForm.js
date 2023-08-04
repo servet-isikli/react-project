@@ -16,7 +16,6 @@ const LoginForm = () => {
         .min(6, "Password must be at least 6 characters"),
     }),
     onSubmit: (values) => {
-      // Form gönderme işlemleri
       console.log(values);
     },
   });
@@ -32,6 +31,9 @@ const LoginForm = () => {
           variant="outlined"
           {...formik.getFieldProps("username")}
         />
+        {formik.touched.username && formik.errors.username ? (
+          <div>{formik.errors.username}</div>
+        ) : null}
 
         <TextField
           fullWidth
@@ -42,6 +44,9 @@ const LoginForm = () => {
           variant="outlined"
           {...formik.getFieldProps("password")}
         />
+        {formik.touched.password && formik.errors.password ? (
+          <div>{formik.errors.password}</div>
+        ) : null}
 
         <Button type="submit" variant="contained" color="primary">
           Login
