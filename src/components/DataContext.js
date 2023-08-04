@@ -19,10 +19,11 @@ export const DataProvider = ({ children }) => {
       .get("http://localhost:1337/api/estates")
       .then((response) => {
         setEstates(response.data.data);
-        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching estates:", error);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);

@@ -58,6 +58,9 @@ const SignupForm = () => {
           variant="outlined"
           {...formik.getFieldProps("firstName")}
         />
+        {formik.touched.firstName && formik.errors.firstName ? (
+          <div>{formik.errors.firstName}</div>
+        ) : null}
 
         <TextField
           fullWidth
@@ -67,6 +70,9 @@ const SignupForm = () => {
           variant="outlined"
           {...formik.getFieldProps("lastName")}
         />
+        {formik.touched.lastName && formik.errors.lastName ? (
+          <div>{formik.errors.lastName}</div>
+        ) : null}
 
         <TextField
           fullWidth
@@ -76,6 +82,9 @@ const SignupForm = () => {
           variant="outlined"
           {...formik.getFieldProps("email")}
         />
+        {formik.touched.email && formik.errors.email ? (
+          <div>{formik.errors.email}</div>
+        ) : null}
 
         <TextField
           fullWidth
@@ -86,6 +95,9 @@ const SignupForm = () => {
           variant="outlined"
           {...formik.getFieldProps("password")}
         />
+        {formik.touched.password && formik.errors.password ? (
+          <div>{formik.errors.password}</div>
+        ) : null}
 
         <TextField
           fullWidth
@@ -96,6 +108,9 @@ const SignupForm = () => {
           variant="outlined"
           {...formik.getFieldProps("confirmPassword")}
         />
+        {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+          <div>{formik.errors.confirmPassword}</div>
+        ) : null}
 
         <Button type="submit" variant="contained" color="primary">
           Sign Up
